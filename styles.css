@@ -219,6 +219,37 @@ body {
     color: #c084fc;
 }
 
+/* Profile background decorative element */
+.profile-bg {
+    background-image: url('assets/profile-photo.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: saturate(1.02) contrast(1.02) brightness(0.98);
+}
+
+.profile-bg::after {
+    /* soft vignette + blur to blend into design */
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.0) 0%, rgba(0,0,0,0.08) 60%);
+    mix-blend-mode: multiply;
+    backdrop-filter: blur(6px) saturate(1.05);
+    pointer-events: none;
+}
+
+/* When in dark mode, slightly dim the background image */
+.dark .profile-bg { filter: brightness(0.8) saturate(0.9) contrast(1.02); }
+
+/* Make hero portrait more decorative on smaller screens */
+@media (max-width: 1024px) {
+    .profile-bg {
+        opacity: 0.9;
+        transform: translateY(-10px) scale(0.98);
+    }
+}
+
 /* Social Icons */
 .social-icon {
     display: flex;
