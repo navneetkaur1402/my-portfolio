@@ -104,7 +104,7 @@ window.addEventListener('scroll', () => {
     } else {
         // Scrolling up
         navbar.style.transform = 'translateY(0)';
-        navbar.style.boxShadow = '0 10px 40px rgba(168, 85, 247, 0.1)';
+        navbar.style.boxShadow = '0 10px 30px rgba(3,105,161,0.08)';
     }
     
     lastScroll = currentScroll;
@@ -126,7 +126,7 @@ function highlightNavigation() {
             navLinks.forEach(link => {
                 link.style.color = '';
                 if (link.getAttribute('href') === `#${sectionId}`) {
-                    link.style.color = '#a855f7';
+                    link.style.color = '#0369a1';
                 }
             });
         }
@@ -300,16 +300,8 @@ if (aboutSection) {
     statsObserver.observe(aboutSection);
 }
 
-// Parallax effect for floating elements
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const parallaxElements = document.querySelectorAll('.animate-float, .animate-float-delayed, .animate-pulse-slow');
-    
-    parallaxElements.forEach((element, index) => {
-        const speed = 0.3 + (index * 0.1);
-        element.style.transform = `translateY(${scrolled * speed}px)`;
-    });
-});
+// Parallax effect removed for cleaner layout (floating decorations removed)
+// window.addEventListener('scroll', ...) intentionally disabled.
 
 // Cursor-trail removed for a cleaner, professional experience.
 // The previous cursor-circle animation was intentionally removed.
@@ -335,9 +327,7 @@ function debounce(func, wait = 10, immediate = true) {
 window.addEventListener('scroll', debounce(highlightNavigation, 10));
 
 // Console message (Easter egg)
-console.log('%c✨ Hello, Beautiful Mind! ✨', 'font-size: 24px; font-weight: bold; background: linear-gradient(135deg, #ec4899, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent;');
-console.log('%c👩‍💻 Interested in the code?', 'font-size: 16px; color: #a855f7;');
-console.log('%c💜 Crafted with love by Navneet Kaur', 'font-size: 14px; color: #ec4899;');
+console.log('Navneet Kaur — Portfolio');
 
 // Page load animation
 window.addEventListener('load', () => {
