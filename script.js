@@ -311,56 +311,8 @@ window.addEventListener('scroll', () => {
     });
 });
 
-// Cursor trail effect (desktop only)
-if (window.innerWidth > 768) {
-    const coords = { x: 0, y: 0 };
-    const circles = document.querySelectorAll('.cursor-circle');
-    
-    // Create cursor circles if they don't exist
-    if (circles.length === 0) {
-        for (let i = 0; i < 12; i++) {
-            const circle = document.createElement('div');
-            circle.className = 'cursor-circle';
-            circle.style.cssText = `
-                position: fixed;
-                width: ${20 - i}px;
-                height: ${20 - i}px;
-                border-radius: 50%;
-                background: linear-gradient(135deg, rgba(236, 72, 153, ${0.5 - i * 0.04}), rgba(168, 85, 247, ${0.5 - i * 0.04}));
-                pointer-events: none;
-                z-index: 9999;
-                transition: transform 0.1s ease-out;
-            `;
-            document.body.appendChild(circle);
-        }
-    }
-    
-    const allCircles = document.querySelectorAll('.cursor-circle');
-    
-    window.addEventListener('mousemove', (e) => {
-        coords.x = e.clientX;
-        coords.y = e.clientY;
-    });
-    
-    function animateCircles() {
-        let x = coords.x;
-        let y = coords.y;
-        
-        allCircles.forEach((circle, index) => {
-            circle.style.left = x - 10 + 'px';
-            circle.style.top = y - 10 + 'px';
-            circle.style.transform = `scale(${(allCircles.length - index) / allCircles.length})`;
-            
-            const nextCircle = allCircles[index + 1] || allCircles[0];
-            x += (parseInt(nextCircle.style.left || 0) - x) * 0.3;
-            y += (parseInt(nextCircle.style.top || 0) - y) * 0.3;
-        });
-        
-        requestAnimationFrame(animateCircles);
-    }
-    
-    animateCircles();
-}
+// Cursor-trail removed for a cleaner, professional experience.
+// The previous cursor-circle animation was intentionally removed.
 
 // Performance optimization: Debounce scroll events
 function debounce(func, wait = 10, immediate = true) {
